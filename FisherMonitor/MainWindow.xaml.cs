@@ -39,14 +39,14 @@ namespace FisherMonitor
 
             var _config = Config.Instance;
             //显示更新说明。
-/*            if (_config.Version != Ver.VER)
+            if (_config.Version != Ver.VER)
             {
                 MessageBox.Show("BiliRoku已经更新到 " + Ver.VER + "\n\n更新说明：\n" + Ver.DESC);
                 _config.Version = Ver.VER;
-            }*/
+            }
             AppendLogln("Core", "INFO", "启动成功。");
-           // var checkUpdate = new CheckUpdate();
-           // checkUpdate.OnResult += CheckUpdate_OnResult;
+            var checkUpdate = new CheckUpdate();
+            checkUpdate.OnResult += CheckUpdate_OnResult;
             InfoLogger.OnInfo += InfoLogger_OnInfo;
         }
 
@@ -60,25 +60,25 @@ namespace FisherMonitor
             throw new NotImplementedException();
         }
 
-/*        private void CheckUpdate_OnResult(object sender, UpdateResultArgs result)
+        private void CheckUpdate_OnResult(object sender, UpdateResultArgs result)
         {
             Dispatcher.Invoke(() =>
             {
                 aboutLinkLabel.Content = "发现新版本：" + result.version;
-                aboutLinkLabel.MouseLeftButtonUp -= aboutLinkLabel_MouseLeftButtonUp;
+/*                aboutLinkLabel.MouseLeftButtonUp -= aboutLinkLabel_MouseLeftButtonUp;*/
                 aboutLinkLabel.MouseLeftButtonUp += (s, e) =>
                 {
                     System.Diagnostics.Process.Start("explorer.exe", result.url);
                 };
             });
+        }
+
+        /*private void aboutLinkLabel_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            var about = new About { Owner = this };
+            about.ShowDialog();
         }*/
 
-/*        private void aboutLinkLabel_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            var about = new About {Owner = this};
-            about.ShowDialog();
-        }
-*/
         private void infoBlock_TextChanged(object sender, TextChangedEventArgs e)
         {
             infoBlock.ScrollToEnd();

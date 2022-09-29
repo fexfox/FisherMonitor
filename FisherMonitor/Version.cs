@@ -43,7 +43,7 @@ namespace FisherMonitor
             {
                 AddInfo("INFO", "检查更新。");
 
-                var ApiUrl = "https://api.github.com/repos/zyzsdy/biliroku/releases";
+                var ApiUrl = "https://api.github.com/repos/fexfox/FisherMonitor/releases";
                 var wc = new WebClient();
                 wc.Headers.Add("Accept: application/json;q=0.9,*/*;q=0.5");
                 wc.Headers.Add("User-Agent: " + Ver.UA);
